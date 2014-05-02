@@ -1,0 +1,165 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/scroll_view"
+	tools:context="com.koatee.conjugator.MainActivity"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Conjuguez le verbe"
+            android:textSize="30sp" />
+
+		<LinearLayout
+		    android:layout_marginTop="10dp"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content">
+		
+		    <LinearLayout
+		        android:layout_width="0dp" 
+		        android:layout_height="wrap_content" 
+		        android:layout_weight=".50" 
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Personne:"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/label_person_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Je"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+		    <LinearLayout
+		        android:layout_width="0dp" 
+		        android:layout_height="wrap_content" 
+		        android:layout_weight=".50" 
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/label_verb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Verbe:"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/label_verb_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="avoir"
+                    android:textSize="20dp" />
+            </LinearLayout>
+		</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/label_tense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Temps:"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/label_tense_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="2"
+                android:text="Passé Composé"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+                
+            <TextView
+                android:id="@+id/label_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Réponse:"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edit_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/ic_ko" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="    Vérifier    "
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_ok"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
