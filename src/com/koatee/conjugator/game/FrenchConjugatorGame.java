@@ -13,6 +13,8 @@ import com.koatee.conjugator.french.models.Parler;
 
 public class FrenchConjugatorGame implements ConjugatorGameFacade{
 
+	private static final String DEFAULT_VERB_FILE_PATH = null;
+	
 	private List<Person> availablePersons;
 	private List<Tense> availableTenses;
 	private List<Verb> availableVerbs;
@@ -25,6 +27,10 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 	private Conjugation solution;
 
 	// private List<String> options;
+	
+	public FrenchConjugatorGame(){
+		this(null);
+	}
 
 	public FrenchConjugatorGame(List<Tense> availableTenses) {
 		this.availableTenses = new ArrayList<Tense>();
@@ -35,6 +41,7 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 		}
 		this.availablePersons = Arrays.asList(Person.values());
 		this.availableVerbs = new ArrayList<Verb>();
+		loadVerbsFromFile(DEFAULT_VERB_FILE_PATH);
 		randomGenerator = new Random();
 	}
 	
