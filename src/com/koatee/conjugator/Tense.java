@@ -1,10 +1,10 @@
 package com.koatee.conjugator;
 
 public enum Tense {
-	PRESENT 		("Présent", false),
-	PRESENT_PERFECT	("Passé composé", true),
-	PAST_IMPERFECT	("Imparfait", false),
-	FUTURE			("Futur simple", false);
+	PRESENT 		("Pr√©sent",       false),
+	PRESENT_PERFECT	("Pass√© compos√©", true),
+	PAST_IMPERFECT	("Imparfait",     false),
+	FUTURE			("Futur simple",  false);
 	
 	private final String frenchName;
 	private final boolean compound;
