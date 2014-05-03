@@ -35,7 +35,8 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 	public FrenchConjugatorGame(List<Tense> availableTenses) {
 		this.availableTenses = new ArrayList<Tense>();
 		if (availableTenses == null) {
-			this.availableTenses.addAll(Arrays.asList(Tense.values()));
+			// TODO: Add the other tenses when they are implemented
+			this.availableTenses.add(Tense.PRESENT);
 		} else {
 			this.availableTenses.addAll(availableTenses);
 		}
