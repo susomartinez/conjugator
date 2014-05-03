@@ -31,6 +31,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -90,10 +91,8 @@ public class MainActivity extends Activity {
 		mCheckImg           = (ImageView)findViewById(R.id.img_check_ok);
 		
 		//Conjugator
-		List<Tense> tenseList = new ArrayList<Tense>();
-		tenseList.add(Tense.PRESENT);
-		mConjugator = new FrenchConjugatorGame(tenseList);
-		mConjugator.loadVerbsFromFile(null);
+		mConjugator = new FrenchConjugatorGame();
+		
 		
 		mNextListener = new OnClickListener() {
 			@Override
@@ -107,7 +106,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
-				setButtonStatus(true);				
+				setButtonStatus(true);
+				focusEditAndShowKeyboard();
 			}
 		};
 		
@@ -188,6 +188,16 @@ public class MainActivity extends Activity {
 		}
 		loadGameInstance();
 	}
+	
+	private void focusEditAndShowKeyboard(){
+		mAnswerEditText.requestFocus();
+		
+		InputMethodManager m = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if(m != null){
+          m.toggleSoftInput(0, InputMethodManager.SHOW_IMPLICIT);
+        } 
+	}
 
 	public void onButtonSolutionClick(View v) {
 		setSolution();
@@ -203,6 +213,7 @@ public class MainActivity extends Activity {
 		mVerbTextView.setText(mConjugator.getVerb().getInfinitive().toUpperCase());
 		mTenseTextView.setText(mConjugator.getTense().getFrenchName());
 		mPersonVerbTextView.setText(mConjugator.getConjugation().getPersonString());
-			
+		
+		focusEditAndShowKeyboard();
 	}
 }

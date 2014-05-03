@@ -20,7 +20,7 @@ public class Parler extends RegularVerb{
 		presentSufixes.put(Person.THIRD_PLURAL, "ent");
 		
 		this.sufixes = new HashMap<Tense, Map<Person, String>>();
-		this.sufixes.put(Tense.PRESENT, presentSufixes);
+		this.sufixes.put(Tense.PRESENT_INDICATIF, presentSufixes);
 	}
 	
 	public Parler(){
