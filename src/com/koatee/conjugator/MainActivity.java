@@ -200,6 +200,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void onButtonSolutionClick(View v) {
+		addCounter(false);
 		setSolution();
 	}
 
