@@ -6,7 +6,8 @@ public enum Person {
 	THIRD_SINGULAR	("Il/Elle/On", 3, false),
 	FIRST_PLURAL	("Nous", 1, true),
 	SECOND_PLURAL	("Vous", 2, true),
-	THIRD_PLURAL	("Ils/Elles", 3, true);
+	THIRD_PLURAL	("Ils/Elles", 3, true),
+	UNKNOWN			("Inconnu", -1, false);
 	
 	private final String form;
 	private final int person;

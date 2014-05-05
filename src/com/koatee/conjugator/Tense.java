@@ -4,7 +4,8 @@ public enum Tense {
 	PRESENT 		("Présent", false),
 	PRESENT_PERFECT	("Passé composé", true),
 	PAST_IMPERFECT	("Imparfait", false),
-	FUTURE			("Futur simple", false);
+	FUTURE			("Futur simple", false),
+	UNKNOWN			("Inconnu", false);
 	
 	private final String frenchName;
 	private final boolean compound;
