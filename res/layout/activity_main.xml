@@ -1,10 +1,9 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/scroll_view"
-	tools:context="com.koatee.conjugator.MainActivity"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content" >
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.koatee.conjugator.MainActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,41 +109,82 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:orientation="vertical">
-                
-            <TextView
-                android:id="@+id/label_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Réponse:"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/edit_answer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textNoSuggestions"
-                android:layout_margin="10dp"
-                android:ems="10"
-                android:textSize="20dp" />
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal" >
 
+                <TextView
+                    android:id="@+id/label_person_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/edit_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    
+                    android:ems="10"
+                    android:inputType="textNoSuggestions"
+                    android:textColor="@color/blue"
+                    android:textSize="20dp" >
+                    <requestFocus/>
+                    
+                </EditText>
+
+                <ImageView
+                    android:id="@+id/img_check_ok"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_ok" />
+
+            </LinearLayout>
+	
+            
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:layout_gravity="center"
+            android:layout_margin="10dp" >
 
             <Button
                 android:id="@+id/btn_verify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:enabled="false"
+                android:enabled="true"
                 android:onClick="onButtonVerifyClick"
-                android:text="    Vérifier    "
+                android:text="Vérifier"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_solution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:onClick="onButtonSolutionClick"
+                android:text="Solution"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:onClick="onButtonNextClick"
+                android:text="Suivant"
                 android:textSize="20dp" />
 
         </LinearLayout>
@@ -166,6 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
@@ -180,6 +221,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>

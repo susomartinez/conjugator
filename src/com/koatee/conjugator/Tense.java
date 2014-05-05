@@ -1,7 +1,7 @@
 package com.koatee.conjugator;
 
 public enum Tense {
-	PRESENT 		("Présent", false),
+	PRESENT_INDICATIF ("Présent", false),
 	PRESENT_PERFECT	("Passé composé", true),
 	PAST_IMPERFECT	("Imparfait", false),
 	FUTURE			("Futur simple", false),

@@ -20,7 +20,7 @@ public class Parler extends RegularVerb{
 		presentSufixes.put(Person.FIRST_PLURAL, "ons");
 		presentSufixes.put(Person.SECOND_PLURAL, "ez");
 		presentSufixes.put(Person.THIRD_PLURAL, "ent");
-		this.sufixes.put(Tense.PRESENT, presentSufixes);
+		this.sufixes.put(Tense.PRESENT_INDICATIF, presentSufixes);
 		
 		HashMap<Person, String> imparfaitSufixes = new HashMap<Person, String>();
 		imparfaitSufixes.put(Person.FIRST_SINGULAR, "ais");
@@ -38,7 +38,7 @@ public class Parler extends RegularVerb{
 		futurSufixes.put(Person.FIRST_PLURAL, "erons");
 		futurSufixes.put(Person.SECOND_PLURAL, "erez");
 		futurSufixes.put(Person.THIRD_PLURAL, "eront");
-		this.sufixes.put(Tense.FUTURE, futurSufixes);
+		this.sufixes.put(Tense.FUTURE, futurSufixes);		
 	}
 	
 	public Parler(){

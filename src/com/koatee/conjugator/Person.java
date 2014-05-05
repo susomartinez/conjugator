@@ -1,13 +1,13 @@
 package com.koatee.conjugator;
 
 public enum Person {
-	FIRST_SINGULAR	("Je", 1, false),
-	SECOND_SINGULAR	("Tu", 2, false),
-	THIRD_SINGULAR	("Il/Elle/On", 3, false),
-	FIRST_PLURAL	("Nous", 1, true),
-	SECOND_PLURAL	("Vous", 2, true),
-	THIRD_PLURAL	("Ils/Elles", 3, true),
-	UNKNOWN			("Inconnu", -1, false);
+	FIRST_SINGULAR	("Je",			 1, false),
+	SECOND_SINGULAR	("Tu",			 2, false),
+	THIRD_SINGULAR	("Il/Elle/On",	 3, false),
+	FIRST_PLURAL	("Nous",		 1, true),
+	SECOND_PLURAL	("Vous",		 2, true),
+	THIRD_PLURAL	("Ils/Elles",	 3, true),
+	UNKNOWN			("Inconnu",		-1, false);
 	
 	private final String form;
 	private final int person;
