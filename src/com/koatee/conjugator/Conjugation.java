@@ -24,4 +24,41 @@ public class Conjugation {
 	public String getConjugation(){
 		return personString.concat(verbalForm);
 	}
+	
+	@Override
+	public boolean equals(Object other){
+	    if (other == null){
+	    	return false;
+	    }
+	    if (other == this){
+	    	return true;
+	    }
+	    if (!(other instanceof Conjugation)){
+	    	return false;
+	    }
+	    Conjugation otherConjugation = (Conjugation)other;
+	    if ( !this.getConjugation().equalsIgnoreCase(otherConjugation.getConjugation()) ){
+	    	return false;
+	    }else{
+	    	return true;
+	    }
+	}
+	
+	public boolean equalsIgnorePronoun(Conjugation other){
+	    if (other == null){
+	    	return false;
+	    }
+	    if (other == this){
+	    	return true;
+	    }
+	    if ( !this.getVerbalForm().equalsIgnoreCase(other.getVerbalForm()) ){
+	    	return false;
+	    }else{
+	    	return true;
+	    }
+	}
+	
+	public String toString(){
+		return this.getConjugation();
+	}
 }
