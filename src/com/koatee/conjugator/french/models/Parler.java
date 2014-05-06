@@ -42,7 +42,7 @@ public class Parler extends RegularVerb{
 		this.sufixes.put(Tense.FUTURE, futureSufixes);
 		
 		HashMap<Person, String> pastParticipleSufix = new HashMap<Person, String>();
-		pastParticipleSufix.put(Person.IMPERSONAL, "Ž");
+		pastParticipleSufix.put(Person.IMPERSONAL, "Ã©");
 		this.sufixes.put(Tense.PAST_PARTICIPLE, pastParticipleSufix);
 		
 		setInfinitive(infinitive);

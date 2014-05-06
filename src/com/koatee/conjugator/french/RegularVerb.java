@@ -82,7 +82,7 @@ public class RegularVerb implements Verb {
 		if ( infinitive.endsWith("cer") ){
 			if ( sufix.startsWith("a") || sufix.startsWith("o") ){
 				radical = radical.substring(0, radical.length()-1);
-				radical = radical.concat("");
+				radical = radical.concat("รง");
 			}
 		}
 		if ( infinitive.endsWith("ger") ){

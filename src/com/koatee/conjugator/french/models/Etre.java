@@ -17,17 +17,17 @@ public class Etre extends IrregularVerb {
 		presentConjugations.put(Person.SECOND_SINGULAR, "es");
 		presentConjugations.put(Person.THIRD_SINGULAR, "est");
 		presentConjugations.put(Person.FIRST_PLURAL, "sommes");
-		presentConjugations.put(Person.SECOND_PLURAL, "êtes");
+		presentConjugations.put(Person.SECOND_PLURAL, "√™tes");
 		presentConjugations.put(Person.THIRD_PLURAL, "sont");
 		this.conjugations.put(Tense.PRESENT_INDICATIVE, presentConjugations);
 
 		HashMap<Person, String> imperfectConjugations = new HashMap<Person, String>();
-		imperfectConjugations.put(Person.FIRST_SINGULAR, "étais");
-		imperfectConjugations.put(Person.SECOND_SINGULAR, "étais");
-		imperfectConjugations.put(Person.THIRD_SINGULAR, "était");
-		imperfectConjugations.put(Person.FIRST_PLURAL, "étions");
-		imperfectConjugations.put(Person.SECOND_PLURAL, "étiez");
-		imperfectConjugations.put(Person.THIRD_PLURAL, "étaient");
+		imperfectConjugations.put(Person.FIRST_SINGULAR, "√©tais");
+		imperfectConjugations.put(Person.SECOND_SINGULAR, "√©tais");
+		imperfectConjugations.put(Person.THIRD_SINGULAR, "√©tait");
+		imperfectConjugations.put(Person.FIRST_PLURAL, "√©tions");
+		imperfectConjugations.put(Person.SECOND_PLURAL, "√©tiez");
+		imperfectConjugations.put(Person.THIRD_PLURAL, "√©taient");
 		this.conjugations.put(Tense.PAST_IMPERFECT, imperfectConjugations);
 
 		HashMap<Person, String> futureConjugations = new HashMap<Person, String>();
@@ -39,8 +39,8 @@ public class Etre extends IrregularVerb {
 		futureConjugations.put(Person.THIRD_PLURAL, "seront");
 		this.conjugations.put(Tense.FUTURE, futureConjugations);
 
-		this.infinitive = new String("Être");
-		this.pastParticiple = new String("été");
+		this.infinitive = new String("√™tre");
+		this.pastParticiple = new String("√©t√©");
 		this.auxiliarVerb = new Avoir();
 	}
 	

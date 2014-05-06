@@ -39,7 +39,7 @@ public class Avoir extends IrregularVerb {
 		futureConjugations.put(Person.THIRD_PLURAL, "auront");
 		this.conjugations.put(Tense.FUTURE, futureConjugations);
 
-		this.infinitive = new String("Avoir");
+		this.infinitive = new String("avoir");
 		this.pastParticiple = new String("eu");
 	}
 	
