@@ -82,13 +82,14 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade {
 	}
 
 	public void newQuestion() {
-		int randomNumber = randomGenerator.nextInt(availableVerbs.size());
-		String infinitive = availableVerbs.get(randomNumber);
-		String className = MODELS_PACKAGE.concat((String) properties
-				.getProperty(infinitive));
+		int randomNumber;
 		boolean modelNotExist = true;
 		while (modelNotExist) {
 			try {
+				randomNumber = randomGenerator.nextInt(availableVerbs.size());
+				String infinitive = availableVerbs.get(randomNumber);
+				String className = MODELS_PACKAGE.concat((String) properties
+						.getProperty(infinitive));
 				Class<?> modelClass = Class.forName(className);
 				Constructor<?> modelConstructor = modelClass
 						.getConstructor(String.class);
