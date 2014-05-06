@@ -175,6 +175,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void onButtonNextClick(View v) {
+		mNextBtn.setEnabled(false);
 		gotoNextGameInstace();
 	}
 	
@@ -216,5 +217,6 @@ public class MainActivity extends Activity {
 		mPersonVerbTextView.setText(mConjugator.getConjugation().getPersonString());
 		
 		focusEditAndShowKeyboard();
+		mNextBtn.setEnabled(true);
 	}
 }
