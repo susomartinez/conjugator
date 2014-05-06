@@ -1,5 +1,7 @@
 package com.koatee.conjugator.game;
 
+import java.io.InputStream;
+
 import com.koatee.conjugator.Conjugation;
 import com.koatee.conjugator.Person;
 import com.koatee.conjugator.Tense;
@@ -7,7 +9,7 @@ import com.koatee.conjugator.Verb;
 
 public interface ConjugatorGameFacade {
 
-	public void loadVerbsFromFile(String filePath);
+	public void loadVerbsFromFile(InputStream verbsFileStream);
 	
 	public void newQuestion();
 	

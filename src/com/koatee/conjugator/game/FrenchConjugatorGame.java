@@ -1,22 +1,28 @@
 package com.koatee.conjugator.game;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Properties;
 import java.util.Random;
 
 import com.koatee.conjugator.Conjugation;
 import com.koatee.conjugator.Person;
 import com.koatee.conjugator.Tense;
 import com.koatee.conjugator.Verb;
-import com.koatee.conjugator.french.models.*;
 
-public class FrenchConjugatorGame implements ConjugatorGameFacade{
+public class FrenchConjugatorGame implements ConjugatorGameFacade {
 
-	private static final String DEFAULT_VERB_FILE_PATH = null;
-	
+	private final static String MODELS_PACKAGE = "com.koatee.conjugator.french.models.";
+	private static final String DEFAULT_VERB_FILE_PATH = "verbs.properties";
+
 	private List<Person> availablePersons;
 	private List<Tense> availableTenses;
-	private List<Verb> availableVerbs;
+	private Properties properties = new Properties();
+	private List<String> availableVerbs;
 	private Random randomGenerator;
 
 	// Question
@@ -27,8 +33,8 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 
 	// TODO: Provide different options
 	// private List<String> options;
-	
-	public FrenchConjugatorGame(){
+
+	public FrenchConjugatorGame() {
 		this(null);
 	}
 
@@ -40,33 +46,71 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 			this.availableTenses.addAll(availableTenses);
 		}
 		this.availablePersons = Person.getUsablePersons();
-		this.availableVerbs = new ArrayList<Verb>();
-		loadVerbsFromFile(DEFAULT_VERB_FILE_PATH);
+		loadVerbsFromFile(null);
 		randomGenerator = new Random();
 	}
-	
-	public void loadVerbsFromFile(String filePath){
-		// TODO: Create the file and get the verbs from it
-		this.availableVerbs.add(new Parler());
-		this.availableVerbs.add(new Parler("AiMeR"));
-		this.availableVerbs.add(new Parler("COMMENCER"));
-		this.availableVerbs.add(new Parler("manger"));
-		this.availableVerbs.add(new Avoir());
-		this.availableVerbs.add(new Etre());
+
+	public void loadVerbsFromFile(InputStream verbsFileStream) {
+		if (verbsFileStream == null) {
+			this.availableVerbs = new ArrayList<String>();
+			properties.put("parler", "Parler");
+			this.availableVerbs.add("parler");
+			properties.put("qimer", "Parler");
+			this.availableVerbs.add("aimer");
+			properties.put("commencer", "Parler");
+			this.availableVerbs.add("commencer");
+			properties.put("manger", "Parler");
+			this.availableVerbs.add("manger");
+			properties.put("avoir", "Avoir");
+			this.availableVerbs.add("avoir");
+			properties.put("être", "Etre");
+			this.availableVerbs.add("être");
+		} else {
+			// InputStream verbsFileStream =
+			// this.getClass().getClassLoader().getResourceAsStream(filePath);
+			// InputStream verbsFileStream =
+			// this.getClass().getResourceAsStream(filePath);
+			try {
+				properties.load(verbsFileStream);
+				// availableVerbs = new
+				// ArrayList<String>(properties.stringPropertyNames());
+				availableVerbs = new ArrayList(properties.keySet());
+			} catch (IOException e) {
+				loadVerbsFromFile(null);
+			}
+		}
 	}
 
 	public void newQuestion() {
 		int randomNumber = randomGenerator.nextInt(availableVerbs.size());
-		questionVerb = availableVerbs.get(randomNumber);
+		String infinitive = availableVerbs.get(randomNumber);
+		String className = MODELS_PACKAGE.concat((String) properties
+				.getProperty(infinitive));
+		boolean modelNotExist = true;
+		while (modelNotExist) {
+			try {
+				Class<?> modelClass = Class.forName(className);
+				Constructor<?> modelConstructor = modelClass
+						.getConstructor(String.class);
+				questionVerb = (Verb) modelConstructor
+						.newInstance(new Object[] { infinitive });
+				modelNotExist = false;
+			} catch (Exception e) {
+				// Exception getting the model class for a verb
+				// i.e. the model is not yet implemented, the while loop
+				// continues
+			}
+		}
 		randomNumber = randomGenerator.nextInt(availableTenses.size());
 		questionTense = availableTenses.get(randomNumber);
 		randomNumber = randomGenerator.nextInt(availablePersons.size());
 		questionPerson = availablePersons.get(randomNumber);
 		solution = questionVerb.conjugate(questionTense, questionPerson);
 	}
-	
+
 	public void newQuestion(boolean result) {
-		// TODO: Change the random method in order to get the failed verbs more often
+		// TODO: Change the random method in order to get the failed verbs more
+		// often
 		newQuestion();
 	}
 
@@ -81,22 +125,23 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 	public Verb getVerb() {
 		return questionVerb;
 	}
-	
+
 	public Conjugation getConjugation() {
 		return solution;
 	}
 
-	
 	public void addVerb(Verb verb) {
-		if (!this.availableVerbs.contains(verb)) {
-			this.availableVerbs.add(verb);
+		String infinitive = verb.getInfinitive().toLowerCase(Locale.FRENCH);
+		if (!this.availableVerbs.contains(infinitive)) {
+			properties.put(infinitive, verb.getClass().getSimpleName());
+			this.availableVerbs.add(infinitive);
 		}
 	}
 
 	public void removeVerb(Verb verb) {
 		this.availableVerbs.remove(verb);
 	}
-	
+
 	public void addTense(Tense tense) {
 		if (!this.availableTenses.contains(tense)) {
 			this.availableTenses.add(tense);
