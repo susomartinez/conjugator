@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Tense {
-	PRESENT_INDICATIVE	("Présent", false, null),
-	PRESENT_PERFECT		("Passé composé", true, PRESENT_INDICATIVE),
+	PRESENT_INDICATIVE	("Pr√©sent", false, null),
+	PRESENT_PERFECT		("Pass√© compos√©", true, PRESENT_INDICATIVE),
 	PAST_IMPERFECT		("Imparfait", false, null),
 	FUTURE				("Futur simple", false, null),
-	PAST_PARTICIPLE		("Participe passé", false, null),
+	PAST_PARTICIPLE		("Participe pass√©", false, null),
 	UNKNOWN				("Inconnu", false, null);
 	
 	private final String frenchName;
