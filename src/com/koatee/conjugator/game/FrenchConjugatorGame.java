@@ -1,7 +1,6 @@
 package com.koatee.conjugator.game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -40,7 +39,7 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 		} else {
 			this.availableTenses.addAll(availableTenses);
 		}
-		this.availablePersons = Arrays.asList(Person.values());
+		this.availablePersons = Person.getUsablePersons();
 		this.availableVerbs = new ArrayList<Verb>();
 		loadVerbsFromFile(DEFAULT_VERB_FILE_PATH);
 		randomGenerator = new Random();
