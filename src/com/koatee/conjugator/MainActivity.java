@@ -1,5 +1,8 @@
 package com.koatee.conjugator;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -89,7 +92,25 @@ public class MainActivity extends Activity {
 		mNextBtn            = (Button)   findViewById(R.id.btn_next);
 		
 		//Conjugator
-		mConjugator = new FrenchConjugatorGame();
+		try {
+			InputStream properties = getAssets().open("verbs.properties");
+			mConjugator = new FrenchConjugatorGame();
+			mConjugator.loadVerbsFromFile(properties);
+		} catch (Exception e) {
+			new AlertDialog.Builder(this)
+		       .setTitle("Zut! ")
+			   .setMessage("j'ai eu un souci et je dois partir!")
+			   .setIcon(R.drawable.ic_ko_icon)
+			   .setNeutralButton("Pas de problème", new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						finish();
+					}
+				})
+			   .show();
+		}
+		
 		
 		mNextListener = new OnClickListener() {
 			@Override
