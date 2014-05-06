@@ -30,6 +30,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -119,6 +120,20 @@ public class MainActivity extends Activity {
 			}
 		};
 		
+		mAnswerEditText.setImeActionLabel("Vérifier", KeyEvent.KEYCODE_ENTER);
+		mAnswerEditText.setOnKeyListener(new OnKeyListener() {
+		    public boolean onKey(View v, int keyCode, KeyEvent event) {
+		        // If the event is a key-down event on the "enter" button
+		        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+		            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+		          // Perform action on key press
+		          verifySolution();
+		          return true;
+		        }
+		        return false;
+		    }
+		});
+		
 		refreshCounters();
 		loadGameInstance();
 	}
@@ -152,6 +167,10 @@ public class MainActivity extends Activity {
 
 	
 	public void onButtonVerifyClick(View v) {
+		verifySolution();
+	}
+
+	private void verifySolution() {
 		setButtonStatus(false);
 		
 		String correctAnswer = mConjugator.getConjugation().getVerbalForm();
@@ -171,7 +190,7 @@ public class MainActivity extends Activity {
 						   .setNeutralButton("Solution", mSolutionListener)
 						   .setNegativeButton("Suivant", mNextListener)
 						   .show();
-		}
+		}		
 	}
 
 	public void onButtonNextClick(View v) {
