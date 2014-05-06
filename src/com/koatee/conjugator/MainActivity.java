@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -53,8 +54,6 @@ public class MainActivity extends Activity {
 	private Button   mVerifyBtn;
 	private Button   mNextBtn;
 	private Button   mSolutionBtn;
-	
-	private ImageView mCheckImg;
 	
 	//Internal counters
 	private Integer  mOKcount = 0;
@@ -89,11 +88,8 @@ public class MainActivity extends Activity {
 		mSolutionBtn        = (Button)   findViewById(R.id.btn_solution);
 		mNextBtn            = (Button)   findViewById(R.id.btn_next);
 		
-		mCheckImg           = (ImageView)findViewById(R.id.img_check_ok);
-		
 		//Conjugator
 		mConjugator = new FrenchConjugatorGame();
-		
 		
 		mNextListener = new OnClickListener() {
 			@Override
@@ -121,10 +117,11 @@ public class MainActivity extends Activity {
 		};
 		
 		mAnswerEditText.setImeActionLabel("Vérifier", KeyEvent.KEYCODE_ENTER);
+		
 		mAnswerEditText.setOnKeyListener(new OnKeyListener() {
 		    public boolean onKey(View v, int keyCode, KeyEvent event) {
-		        // If the event is a key-down event on the "enter" button
-		        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+		    	// If the event is a key-down event on the "enter" button
+		        if ((event.getAction() == KeyEvent.ACTION_DOWN) && 
 		            (keyCode == KeyEvent.KEYCODE_ENTER)) {
 		          // Perform action on key press
 		          verifySolution();
@@ -179,7 +176,7 @@ public class MainActivity extends Activity {
 		addCounter(isCorrect);
 		if (isCorrect){
 			//correct answer
-			mCheckImg.setVisibility(ImageView.VISIBLE);
+			mAnswerEditText.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_ok_icon), null);
 			
 		} else {
 			new AlertDialog.Builder(this)
@@ -203,7 +200,7 @@ public class MainActivity extends Activity {
 		if (mSolutionBtn.isEnabled()) {
 			addCounter(false);			
 		} else {
-			mCheckImg.setVisibility(ImageView.INVISIBLE);
+			mAnswerEditText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
 			setButtonStatus(true);
 		}
 		loadGameInstance();
