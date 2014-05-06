@@ -1,5 +1,9 @@
 package com.koatee.conjugator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum Person {
 	IMPERSONAL		("Impersonnel",	 0, false),
 	FIRST_SINGULAR	("Je",			 1, false),
@@ -34,5 +38,14 @@ public enum Person {
 	
 	public String toString(){
 		return form;
+	}
+	
+	public static List<Person> getUsablePersons(){
+		List<Person> result = new ArrayList<Person>(Arrays.asList(Person.values()));
+		// Remove invalid persons
+		result.remove(Person.IMPERSONAL);
+		result.remove(Person.UNKNOWN);
+		
+		return result;
 	}
 }

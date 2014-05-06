@@ -58,7 +58,7 @@ public class RegularVerb implements Verb {
 		if (!tense.isCompound()) {
 			verb = getRadical();
 			if (verb != null && sufixes.containsKey(tense)) {
-				verb = verb.concat(sufixes.get(tense).get(person));
+				verb = applyOrtographicalRules(verb, sufixes.get(tense).get(person));
 			}
 		} else {
 			if (auxiliarVerb != null) {
@@ -71,6 +71,27 @@ public class RegularVerb implements Verb {
 		}
 
 		Conjugation result = new Conjugation(person, verb);
+		return result;
+	}
+	
+	private String applyOrtographicalRules(String radical, String sufix){
+		String result = new String();
+		if ( radical == null || sufix == null ){
+			return result;
+		}
+		if ( infinitive.endsWith("cer") ){
+			if ( sufix.startsWith("a") || sufix.startsWith("o") ){
+				radical = radical.substring(0, radical.length()-1);
+				radical = radical.concat("ç");
+			}
+		}
+		if ( infinitive.endsWith("ger") ){
+			if ( sufix.startsWith("a") || sufix.startsWith("o") ){
+				radical = radical.concat("e");
+			}
+		}
+		
+		result = radical.concat(sufix);
 		return result;
 	}
 

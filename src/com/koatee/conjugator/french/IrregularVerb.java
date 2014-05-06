@@ -15,7 +15,7 @@ public class IrregularVerb implements Verb {
 
 	protected String infinitive, pastParticiple;
 
-	private Verb auxiliarVerb;
+	protected Verb auxiliarVerb;
 
 	protected IrregularVerb() {
 	}

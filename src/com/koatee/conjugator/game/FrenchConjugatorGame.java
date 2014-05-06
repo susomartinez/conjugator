@@ -9,7 +9,7 @@ import com.koatee.conjugator.Conjugation;
 import com.koatee.conjugator.Person;
 import com.koatee.conjugator.Tense;
 import com.koatee.conjugator.Verb;
-import com.koatee.conjugator.french.models.Parler;
+import com.koatee.conjugator.french.models.*;
 
 public class FrenchConjugatorGame implements ConjugatorGameFacade{
 
@@ -26,6 +26,7 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 	private Verb questionVerb;
 	private Conjugation solution;
 
+	// TODO: Provide different options
 	// private List<String> options;
 	
 	public FrenchConjugatorGame(){
@@ -35,8 +36,7 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 	public FrenchConjugatorGame(List<Tense> availableTenses) {
 		this.availableTenses = new ArrayList<Tense>();
 		if (availableTenses == null) {
-			// TODO: Add the other tenses when they are implemented
-			this.availableTenses.add(Tense.PRESENT_INDICATIVE);
+			this.availableTenses.addAll(Tense.getUsableTenses());
 		} else {
 			this.availableTenses.addAll(availableTenses);
 		}
@@ -50,6 +50,10 @@ public class FrenchConjugatorGame implements ConjugatorGameFacade{
 		// TODO: Create the file and get the verbs from it
 		this.availableVerbs.add(new Parler());
 		this.availableVerbs.add(new Parler("AiMeR"));
+		this.availableVerbs.add(new Parler("COMMENCER"));
+		this.availableVerbs.add(new Parler("manger"));
+		this.availableVerbs.add(new Avoir());
+		this.availableVerbs.add(new Etre());
 	}
 
 	public void newQuestion() {
