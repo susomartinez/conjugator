@@ -11,4 +11,5 @@ public interface Verb {
 	public List<Conjugation> conjugate(Tense tense);
 	public Conjugation conjugate(Tense tense, Person person);
 	public String getInfinitive();
+	public String getPastParticiple();
 }

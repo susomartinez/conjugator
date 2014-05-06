@@ -1,6 +1,7 @@
 package com.koatee.conjugator;
 
 public enum Person {
+	IMPERSONAL		("Impersonnel",	 0, false),
 	FIRST_SINGULAR	("Je",			 1, false),
 	SECOND_SINGULAR	("Tu",			 2, false),
 	THIRD_SINGULAR	("Il/Elle/On",	 3, false),

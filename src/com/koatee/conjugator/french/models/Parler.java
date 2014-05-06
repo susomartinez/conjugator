@@ -10,7 +10,8 @@ import com.koatee.conjugator.french.RegularVerb;
 public class Parler extends RegularVerb{
 
 	public Parler(String infinitive) {
-		super(infinitive);
+		super();
+		
 		this.sufixes = new HashMap<Tense, Map<Person, String>>();
 		
 		HashMap<Person, String> presentSufixes = new HashMap<Person, String>();
@@ -20,25 +21,31 @@ public class Parler extends RegularVerb{
 		presentSufixes.put(Person.FIRST_PLURAL, "ons");
 		presentSufixes.put(Person.SECOND_PLURAL, "ez");
 		presentSufixes.put(Person.THIRD_PLURAL, "ent");
-		this.sufixes.put(Tense.PRESENT_INDICATIF, presentSufixes);
+		this.sufixes.put(Tense.PRESENT_INDICATIVE, presentSufixes);
 		
-		HashMap<Person, String> imparfaitSufixes = new HashMap<Person, String>();
-		imparfaitSufixes.put(Person.FIRST_SINGULAR, "ais");
-		imparfaitSufixes.put(Person.SECOND_SINGULAR, "ais");
-		imparfaitSufixes.put(Person.THIRD_SINGULAR, "ait");
-		imparfaitSufixes.put(Person.FIRST_PLURAL, "ions");
-		imparfaitSufixes.put(Person.SECOND_PLURAL, "iez");
-		imparfaitSufixes.put(Person.THIRD_PLURAL, "aient");
-		this.sufixes.put(Tense.PAST_IMPERFECT, imparfaitSufixes);
+		HashMap<Person, String> imperfectSufixes = new HashMap<Person, String>();
+		imperfectSufixes.put(Person.FIRST_SINGULAR, "ais");
+		imperfectSufixes.put(Person.SECOND_SINGULAR, "ais");
+		imperfectSufixes.put(Person.THIRD_SINGULAR, "ait");
+		imperfectSufixes.put(Person.FIRST_PLURAL, "ions");
+		imperfectSufixes.put(Person.SECOND_PLURAL, "iez");
+		imperfectSufixes.put(Person.THIRD_PLURAL, "aient");
+		this.sufixes.put(Tense.PAST_IMPERFECT, imperfectSufixes);
 		
-		HashMap<Person, String> futurSufixes = new HashMap<Person, String>();
-		futurSufixes.put(Person.FIRST_SINGULAR, "erai");
-		futurSufixes.put(Person.SECOND_SINGULAR, "eras");
-		futurSufixes.put(Person.THIRD_SINGULAR, "era");
-		futurSufixes.put(Person.FIRST_PLURAL, "erons");
-		futurSufixes.put(Person.SECOND_PLURAL, "erez");
-		futurSufixes.put(Person.THIRD_PLURAL, "eront");
-		this.sufixes.put(Tense.FUTURE, futurSufixes);		
+		HashMap<Person, String> futureSufixes = new HashMap<Person, String>();
+		futureSufixes.put(Person.FIRST_SINGULAR, "erai");
+		futureSufixes.put(Person.SECOND_SINGULAR, "eras");
+		futureSufixes.put(Person.THIRD_SINGULAR, "era");
+		futureSufixes.put(Person.FIRST_PLURAL, "erons");
+		futureSufixes.put(Person.SECOND_PLURAL, "erez");
+		futureSufixes.put(Person.THIRD_PLURAL, "eront");
+		this.sufixes.put(Tense.FUTURE, futureSufixes);
+		
+		HashMap<Person, String> pastParticipleSufix = new HashMap<Person, String>();
+		pastParticipleSufix.put(Person.IMPERSONAL, "Ž");
+		this.sufixes.put(Tense.PAST_PARTICIPLE, pastParticipleSufix);
+		
+		setInfinitive(infinitive);
 	}
 	
 	public Parler(){
