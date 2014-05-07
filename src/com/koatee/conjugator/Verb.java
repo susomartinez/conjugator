@@ -3,13 +3,42 @@ package com.koatee.conjugator;
 import java.util.List;
 
 /**
+ * Interface for a verb
  * 
- * @author jesus
- *
+ * @author susomartinez
  */
 public interface Verb {
-	public List<Conjugation> conjugate(Tense tense);
-	public Conjugation conjugate(Tense tense, Person person);
-	public String getInfinitive();
-	public String getPastParticiple();
+    /**
+     * Conjugates a tense completely, i.e. for every person
+     * 
+     * @param tense
+     *            The tense to conjugate the verb in
+     * @return A list with a conjugation for available person
+     */
+    public List<Conjugation> conjugate(Tense tense);
+
+    /**
+     * Conjugates the verb in the given tense and person
+     * 
+     * @param tense
+     *            The tense to conjugate the verb in
+     * @param person
+     *            The person to conjugate the verb in
+     * @return The corresponding verb conjugation
+     */
+    public Conjugation conjugate(Tense tense, Person person);
+
+    /**
+     * Gets the infinitive
+     * 
+     * @return The verb's infinitive form
+     */
+    public String getInfinitive();
+
+    /**
+     * Gets the past participle
+     * 
+     * @return Ther verb's past participle form
+     */
+    public String getPastParticiple();
 }
