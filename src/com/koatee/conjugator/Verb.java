@@ -13,7 +13,7 @@ public interface Verb {
      * 
      * @param tense
      *            The tense to conjugate the verb in
-     * @return A list with a conjugation for available person
+     * @return A list with the conjugations for each available person
      */
     public List<Conjugation> conjugate(Tense tense);
 
